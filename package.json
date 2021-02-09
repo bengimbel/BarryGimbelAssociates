@@ -1,5 +1,5 @@
 {
-  "name": "Barry Gimbel and Associates",
+  "name": "barry_gimbel_associates",
   "description": "Barry Gimbel and Associates",
   "version": "1.0.0",
   "author": "Ben Gimbel <bengimble@gmail.com>",
@@ -38,8 +38,28 @@
     "tiny-skeleton-loader-react": "^1.1.3"
   },
   "devDependencies": {
-    "eslint-plugin-mdx": "^1.6.3",
-    "prettier": "^1.19.1"
+    "@babel/core": "^7.12.10",
+    "@babel/eslint-parser": "^7.12.1",
+    "@babel/eslint-plugin": "^7.12.1",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.12.10",
+    "@babel/preset-react": "^7.12.10",
+    "@testing-library/cypress": "^7.0.3",
+    "cypress": "^6.1.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-cypress": "^2.11.2",
+    "eslint-plugin-mdx": "^1.8.2",
+    "eslint-plugin-prettier": "^3.2.0",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "gatsby-plugin-eslint": "^2.0.8",
+    "husky": "^4.3.5",
+    "lint-staged": "^10.5.3",
+    "netlify-plugin-cypress": "^1.4.1",
+    "prettier": "^1.19.1",
+    "start-server-and-test": "^1.11.6"
   },
   "keywords": [
     "gatsby",
