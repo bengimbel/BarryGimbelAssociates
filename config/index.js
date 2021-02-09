@@ -2,13 +2,13 @@ module.exports = {
 
   //-- SITE SETTINGS -----
   author: "Ben Gimbel",
-  siteTitle: "Barry Gimbel & Associates",
+  siteTitle: "Barry Gimbel and Associates",
   siteShortTitle: "BGA", // Used as logo text in header, footer, and splash screen
-  siteDescription: "Barry Gimbel & Associates",
+  siteDescription: "Barry Gimbel and Associates",
   siteUrl: "https://barrygimbel.com",
   siteLanguage: "en_US",
   siteIcon: "content/favicon.png", // Relative to gatsby-config file
-  seoTitleSuffix: "Barry Gimbel & Associates", // SEO title syntax will be e.g. "Imprint - {seoTitleSuffix}"
+  seoTitleSuffix: "BGA", // SEO title syntax will be e.g. "Imprint - {seoTitleSuffix}"
 
   // -- THEME SETTINGS -----
   colors: {
