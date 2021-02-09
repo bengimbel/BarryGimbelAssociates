@@ -61,9 +61,7 @@ const ImageContainer = styled.div`
 const AnimatedUnderlining = motion.custom(Underlining)
 
 
-const Hero = ({ content, data }) => {
-  console.log(data, 'data');
-
+const Hero = () => {
   const { darkMode } = useContext(Context).state
 
   // Controls to orchestrate animations of greetings, emoji, social profiles, underlining
