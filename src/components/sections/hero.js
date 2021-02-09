@@ -109,7 +109,7 @@ const Hero = () => {
             Property Tax Refund Specialist
           </h1>
           <p className="subtitle">        
-            Barry Gimbel & Associates will recover property tax refunds for homeowners. In addition to obtaining refunds, we also appeal your property's assessment.
+            Barry Gimbel & Associates will recover property tax refunds for homeowners in Cook County, Illinois. In addition to obtaining refunds, we also appeal your property's assessment.
           </p>
           </TextContainer>
           <ImageContainer>

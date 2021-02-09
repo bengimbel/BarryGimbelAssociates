@@ -117,12 +117,6 @@ const About = () => {
           transition: { delay: 0.4, ease: "circOut" },
         })
       }
-      // await uControls.start({
-      //   boxShadow: `inset 0 -2rem 0 ${
-      //     darkMode ? darkTheme.colors.secondary : lightTheme.colors.secondary
-      //   }`,
-      //   transition: { delay: 0.4, ease: "circOut" },
-      // })
     
   }, [tControls, iControls, tOnScreen, iOnScreen])
 
@@ -141,7 +135,7 @@ const About = () => {
         </h1>
         <ContactHeading>        
         If we are not successful, <AnimatedUnderlining animate={uControls} big>there is no fee or cost to you.</AnimatedUnderlining> If we are successful, then a fee of 33% of
-        the refunds received. For a successful assessment appeal, a fee of 33% of the past year's savings.
+        the refunds received. For a successful assessment appeal, a fee of 33% of the first year's savings.
         </ContactHeading>
         </TitleContainer>
           <MainContainer>
@@ -153,7 +147,7 @@ const About = () => {
                   </p>
                   <p className="description">        
                   Get refunds for up to 4 years of past property taxes. Homeowner's tax bills
-                  are often calculated wrong. <AnimatedUnderlining animate={uControls}>I have obtained over 30,000 refunds for homeowners.</AnimatedUnderlining>
+                  are often calculated wrong. <AnimatedUnderlining animate={uControls}>I have obtained over $40,000 in refunds for homeowners.</AnimatedUnderlining>
                   </p>
                 </TextContent>
               </FlexContainer>

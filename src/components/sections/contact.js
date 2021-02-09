@@ -173,7 +173,7 @@ const Contact = () => {
         Contact Us
       </h1>
       <ContactHeading>
-        Looking to appeal your property's assessment or get a tax refund? Leave your information below. We would love to help.
+        Looking to appeal your property's assessment or obtain a tax refund? Leave your information below. We would love to help.
       </ContactHeading>
       </HeadingContainer>
       <AlertContainer>
