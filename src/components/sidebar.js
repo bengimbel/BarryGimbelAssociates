@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 import styled from "styled-components"
 import { Link } from "gatsby"
 
@@ -42,7 +41,7 @@ const StyledNav = styled.nav`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: ${({ theme }) => theme.colors.background};
+  background: ${({ theme }) => theme.colors.backgroundHero};
   height: 100vh;
   width: 55%;
   text-align: left;
@@ -68,43 +67,26 @@ const StyledNav = styled.nav`
     font-size: 1.5rem;
     border-radius: ${({ theme }) => theme.borderRadius};
     border: 0.125rem solid ${({ theme }) => theme.colors.primary};
-    background: ${({ theme }) => theme.colors.background};
+    background: ${({ theme }) => theme.colors.backgroundHero};
   }
 `
 
 const Sidebar = ({ open, setOpen }) => {
-  const { menu, button } = navLinks
+  const { menu } = navLinks
   return (
     <>
       <StyledContainer open={open} aria-hidden={!open} tabIndex={open ? 1 : -1}>
         <StyledNav>
           {menu.map(({ name, url }, key) => (
-            <Link
-              className="nav-link"
-              key={key}
-              to={url}
-              onClick={() => setOpen(!open)}
-            >
+            <Link className="nav-link" key={key} to={url} onClick={() => setOpen(!open)}>
               {name}
             </Link>
           ))}
-          <Link
-            className="cta-btn"
-            to={button.url}
-            onClick={() => setOpen(!open)}
-          >
-            {button.name}
-          </Link>
         </StyledNav>
       </StyledContainer>
       <StyledBackdrop open={open} />
     </>
   )
-}
-
-Sidebar.propTypes = {
-  open: PropTypes.bool.isRequired,
-  setOpen: PropTypes.func.isRequired,
 }
 
 export default Sidebar

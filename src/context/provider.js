@@ -14,7 +14,6 @@ const GlobalStateProvider = ({ children, initialState }) => {
 GlobalStateProvider.propTypes = {
   children: PropTypes.any.isRequired,
   initialState: PropTypes.shape({
-    isIntroDone: PropTypes.bool.isRequired,
     darkMode: PropTypes.bool.isRequired,
   }).isRequired,
 }

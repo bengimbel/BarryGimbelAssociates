@@ -8,17 +8,17 @@ const StyledNav = styled.nav`
   display: none;
   @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     width: 31.25rem;
-    background: ${({ theme }) => theme.colors.background};
+    background: ${({ theme }) => theme.colors.backgroundHero};
     a {
       color: ${({ theme }) => theme.colors.primary};
     }
   }
   .nav-link {
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 600;
     text-align: center;
     position: relative;
     margin: 0 0 0 1.25rem;
@@ -42,20 +42,20 @@ const StyledNav = styled.nav`
     font-weight: 700;
     border-radius: ${({ theme }) => theme.borderRadius};
     border: 0.125rem solid ${({ theme }) => theme.colors.primary};
-    background: ${({ theme }) => theme.colors.background};
+    background: ${({ theme }) => theme.colors.backgroundHero};
     transition: 20ms ease-out;
     font-size: 1rem;
     padding: 0.5rem 1.5rem;
     margin: 0;
     &:hover {
       background: ${({ theme }) => theme.colors.primary};
-      color: ${({ theme }) => theme.colors.background};
+      color: ${({ theme }) => theme.colors.backgroundHero};
     }
   }
 `
 
 const Navbar = () => {
-  const { menu, button } = navLinks
+  const { menu } = navLinks
   return (
     <StyledNav>
       {menu.map(({ name, url }, key) => {
@@ -65,9 +65,6 @@ const Navbar = () => {
           </Link>
         )
       })}
-      <Link className="cta-btn" to={button.url}>
-        {button.name}
-      </Link>
     </StyledNav>
   )
 }

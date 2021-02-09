@@ -6,7 +6,7 @@ const {
   siteIcon,
   siteUrl,
   colors,
-} = require(`./config`)
+} = require("./config")
 
 module.exports = {
   siteMetadata: {
@@ -24,14 +24,6 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-offline`,
     `gatsby-plugin-netlify`,
-    // {
-    //   resolve: `gatsby-plugin-gtag`,
-    //   options: {
-    //     trackingId: `UA-XXXXXXXX-X`,
-    //     head: false,
-    //     anonymize: true,
-    //   },
-    // },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -44,39 +36,37 @@ module.exports = {
         icon: siteIcon, // This path is relative to the root of the site.
       },
     },
-    {
-      resolve: `gatsby-plugin-mdx`,
-      options: {
-        extensions: [`.mdx`, `.md`],
-        gatsbyRemarkPlugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 1000,
-              quality: 80,
-            },
-          },
-        ],
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-mdx`,
+    //   options: {
+    //     extensions: [`.mdx`, `.md`],
+    //     gatsbyRemarkPlugins: [
+    //       {
+    //         resolve: `gatsby-remark-images`,
+    //         options: {
+    //           maxWidth: 1000,
+    //           quality: 80,
+    //         },
+    //       },
+    //     ],
+    //   },
+    // },
+    // `gatsby-transformer-json`,
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     path: `${__dirname}/content`,
+    //     name: `content`,
+    //   },
+    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content`,
-        name: `content`,
-      },
+        name: `data`,
+        path: `${__dirname}/data`
+      }
     },
-    {
-      resolve: `gatsby-plugin-eslint`,
-      options: {
-        test: /\.js$|\.jsx$/,
-        exclude: /(node_modules|.cache|public)/,
-        stages: [`develop`],
-        options: {
-          emitWarning: true,
-          failOnError: false,
-        },
-      },
-    },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
   ],
 }

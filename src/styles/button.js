@@ -6,7 +6,7 @@ const StyledButton = styled.button`
   width: 15.625rem;
   height: 3rem;
   background-color: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.colors.backgroundHero};
   padding: 1rem;
   margin: 0 ${({ center }) => (center ? "auto" : "0")};
   font-size: 0.875rem;
@@ -40,10 +40,6 @@ Button.propTypes = {
   onClick: PropTypes.func,
   textAlign: PropTypes.string,
   center: PropTypes.bool,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
 }
 
 export default Button

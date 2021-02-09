@@ -1,21 +1,17 @@
 import React, { useEffect, useContext } from "react"
-import PropTypes from "prop-types"
 import styled from "styled-components"
-import Img from "gatsby-image"
-import { MDXRenderer } from "gatsby-plugin-mdx"
 import { motion, useAnimation } from "framer-motion"
-
+import ImageComponent from '../images';
 import Context from "../../context/"
 import ContentWrapper from "../../styles/contentWrapper"
 import Underlining from "../../styles/underlining"
-import Social from "../social"
-import SplashScreen from "../splashScreen"
 import { lightTheme, darkTheme } from "../../styles/theme"
 
 const StyledSection = styled.section`
   width: 100%;
   height: auto;
-  background: ${({ theme }) => theme.colors.background};
+  padding: 2rem 0;
+  background: ${({ theme }) => theme.colors.backgroundHero};
 `
 
 const StyledContentWrapper = styled(ContentWrapper)`
@@ -25,25 +21,9 @@ const StyledContentWrapper = styled(ContentWrapper)`
     min-height: 60vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin-bottom: 6rem;
+    justify-content: center
     @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
-      margin-bottom: 4rem;
-    }
-    .greetings {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-    }
-    .emoji {
-      margin-left: 0.75rem;
-      width: 2.2rem;
-      height: 2.2rem;
-      @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
-        margin-left: 1rem;
-        width: 3rem;
-        height: 3rem;
-      }
+    
     }
     .title {
       margin-bottom: 1.5rem;
@@ -52,20 +32,39 @@ const StyledContentWrapper = styled(ContentWrapper)`
       }
     }
     .subtitle {
-      margin-top: -0.75rem;
-    }
-    .description {
-      font-size: 1.125rem;
-      margin-bottom: 2rem;
+      font-size: 1.25rem;
     }
   }
 `
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+`
+const TextContainer = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+
+`
+const ImageContainer = styled.div`
+  display: flex;
+  flex: 1.5;
+  flex-direction: column;
+  min-width: 200px;
+  flex-wrap: wrap;
+`
+
 
 const AnimatedUnderlining = motion.custom(Underlining)
 
-const Hero = ({ content }) => {
-  const { frontmatter, body } = content[0].node
-  const { isIntroDone, darkMode } = useContext(Context).state
+
+const Hero = ({ content, data }) => {
+  console.log(data, 'data');
+
+  const { darkMode } = useContext(Context).state
 
   // Controls to orchestrate animations of greetings, emoji, social profiles, underlining
   const gControls = useAnimation()
@@ -76,7 +75,7 @@ const Hero = ({ content }) => {
   // Start Animations after the splashScreen sequence is done
   useEffect(() => {
     const pageLoadSequence = async () => {
-      if (isIntroDone) {
+     
         eControls.start({
           rotate: [0, -10, 12, -10, 9, 0, 0, 0, 0, 0, 0],
           transition: { duration: 2.5, loop: 3, repeatDelay: 1 },
@@ -97,62 +96,33 @@ const Hero = ({ content }) => {
           }`,
           transition: { delay: 0.4, ease: "circOut" },
         })
-      }
+
     }
     pageLoadSequence()
-  }, [isIntroDone, darkMode, eControls, gControls, sControls, uControls])
+  }, [ darkMode, eControls, gControls, sControls, uControls])
 
   return (
     <StyledSection id="hero">
-      {!isIntroDone && <SplashScreen />}
       <StyledContentWrapper>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={gControls}
-          data-testid="animated-heading"
-        >
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={gControls}>
+        <Container>
+          <TextContainer>
           <h1 className="title">
-            <div className="greetings">
-              {frontmatter.greetings}
-              <motion.div
-                animate={eControls}
-                style={{ originX: 0.7, originY: 0.7 }}
-              >
-                <Img
-                  className="emoji"
-                  fluid={frontmatter.icon.childImageSharp.fluid}
-                />
-              </motion.div>
-            </div>
-            {frontmatter.title}
+            Property Tax Refund Specialist
           </h1>
-          <h2 className="subtitle">
-            {frontmatter.subtitlePrefix}{" "}
-            <AnimatedUnderlining animate={uControls} big>
-              {frontmatter.subtitle}
-            </AnimatedUnderlining>
-          </h2>
-          <div className="description">
-            <MDXRenderer>{body}</MDXRenderer>
-          </div>
-        </motion.div>
-        <motion.div initial={{ opacity: 0, x: 20 }} animate={sControls}>
-          <Social fontSize=".95rem" padding=".3rem 1.25rem" width="auto" />
+          <p className="subtitle">        
+            Barry Gimbel & Associates will recover property tax refunds for homeowners. In addition to obtaining refunds, we also appeal your property's assessment.
+          </p>
+          </TextContainer>
+          <ImageContainer>
+            <ImageComponent name="home" /> 
+          </ImageContainer>
+          </Container>
         </motion.div>
       </StyledContentWrapper>
     </StyledSection>
   )
 }
 
-Hero.propTypes = {
-  content: PropTypes.arrayOf(
-    PropTypes.shape({
-      node: PropTypes.shape({
-        body: PropTypes.string.isRequired,
-        frontmatter: PropTypes.object.isRequired,
-      }).isRequired,
-    }).isRequired
-  ).isRequired,
-}
 
-export default Hero
+export default Hero;

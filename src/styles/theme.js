@@ -9,9 +9,9 @@ export const sharedPreferences = {
     lg: "1200px",
   },
   borderRadius: "1rem",
-  pageWidth: "62.5rem",
+  pageWidth: "85.5rem",
   headerHeight: "6.25rem",
-  footerHeight: "7.5rem",
+  footerHeight: "4.5rem",
 }
 
 export const lightTheme = {

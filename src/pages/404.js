@@ -12,7 +12,7 @@ const StyledSection = styled.section`
   margin: 0 auto;
   padding: 0 2.5rem;
   height: auto;
-  background: ${({ theme }) => theme.colors.background};
+  background: ${({ theme }) => theme.colors.backgroundHero};
   h1 {
     font-size: 1.5rem;
   }
@@ -21,16 +21,17 @@ const StyledSection = styled.section`
 const StyledContentWrapper = styled(ContentWrapper)`
   && {
     width: 100%;
-    max-width: 36rem;
     margin: 0;
     padding: 0;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `
 
 const NotFoundPage = () => {
   const globalState = {
-    isIntroDone: true,
     darkMode: false,
   }
 
@@ -43,8 +44,7 @@ const NotFoundPage = () => {
         />
         <StyledSection>
           <StyledContentWrapper>
-            <h1 data-testid="heading">NOT FOUND</h1>
-            <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+            <h1>PAGE NOT FOUND</h1>
           </StyledContentWrapper>
         </StyledSection>
       </Layout>

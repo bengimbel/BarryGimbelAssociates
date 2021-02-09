@@ -1,19 +1,16 @@
 import React, { useRef, useContext, useEffect } from "react"
-import PropTypes from "prop-types"
 import styled from "styled-components"
-import Img from "gatsby-image"
-import { MDXRenderer } from "gatsby-plugin-mdx"
 import { motion, useAnimation } from "framer-motion"
-
 import { useOnScreen } from "../../hooks/"
-import Context from "../../context/"
 import ContentWrapper from "../../styles/contentWrapper"
+import ImageComponent from '../images';
+import Underlining from "../../styles/underlining"
 
 const StyledSection = styled.section`
   width: 100%;
   height: auto;
-  background: ${({ theme }) => theme.colors.background};
-  margin-top: 4rem;
+  padding: 2rem 0;
+  background: ${({ theme }) => theme.colors.backgroundAbout};
 `
 
 const StyledContentWrapper = styled(ContentWrapper)`
@@ -27,47 +24,81 @@ const StyledContentWrapper = styled(ContentWrapper)`
       flex-direction: row;
       justify-content: space-between;
     }
-    .section-title {
-      margin-bottom: 2rem;
-    }
-    .inner-wrapper {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .text-content {
-      width: 100%;
-      max-width: 31.25rem;
-    }
-    .image-content {
-      width: 100%;
-      max-width: 18rem;
-      margin-top: 4rem;
-      margin-left: 0;
+    .title {
+      margin-bottom: 1.5rem;
       @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
-        margin-left: 2rem;
+        margin-bottom: 1rem;
       }
     }
-    .about-author {
-      border-radius: ${({ theme }) => theme.borderRadius};
-      box-shadow: 0 0 2.5rem rgba(0, 0, 0, 0.16);
-      filter: grayscale(20%) contrast(1) brightness(90%);
-      transition: all 0.3s ease-out;
-      &:hover {
-        filter: grayscale(50%) contrast(1) brightness(90%);
-        transform: translate3d(0px, -0.125rem, 0px);
-        box-shadow: 0 0 2.5rem rgba(0, 0, 0, 0.32);
-      }
+    .subtitle {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin: 0;
+      padding-bottom: 1rem;
+    }
+    .description {
+      font-size: 1rem;
+      margin: 0;
+    }
+    .info {
+      font-size: 1.25rem;
     }
   }
 `
+const ContactHeading = styled.h3`
+  padding-bottom: 1rem;
+  font-weight: 500;
+`
+const FlexContainer = styled.div`
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  min-width: 300px;
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    padding: 0;
+  }
+`
 
-const About = ({ content }) => {
-  const { frontmatter, body } = content[0].node
-  const { isIntroDone } = useContext(Context).state
+const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+const RowOne = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 4rem 0;
+`
+const RowTwo = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap-reverse;
+  padding: 4rem 0;
+`
+const TextContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  
+`
+const TitleContainer = styled.div`
+width: 100%;
+@media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
+  width: 70%;
+}
+`
+const AnimatedUnderlining = motion.custom(Underlining)
+
+const About = () => {
   const tControls = useAnimation()
   const iControls = useAnimation()
-
+  const uControls = useAnimation()
   // Required for animating the text content
   const tRef = useRef()
   const tOnScreen = useOnScreen(tRef)
@@ -78,11 +109,22 @@ const About = ({ content }) => {
 
   // Only trigger animations if the intro is done or disabled
   useEffect(() => {
-    if (isIntroDone) {
       if (tOnScreen) tControls.start({ opacity: 1, y: 0 })
-      if (iOnScreen) iControls.start({ opacity: 1, x: 0 })
-    }
-  }, [isIntroDone, tControls, iControls, tOnScreen, iOnScreen])
+      if (iOnScreen) {
+        iControls.start({ opacity: 1, x: 0 })
+        uControls.start({
+          boxShadow: `inset 0 -2rem 0 #FFF4D9`,
+          transition: { delay: 0.4, ease: "circOut" },
+        })
+      }
+      // await uControls.start({
+      //   boxShadow: `inset 0 -2rem 0 ${
+      //     darkMode ? darkTheme.colors.secondary : lightTheme.colors.secondary
+      //   }`,
+      //   transition: { delay: 0.4, ease: "circOut" },
+      // })
+    
+  }, [tControls, iControls, tOnScreen, iOnScreen])
 
   return (
     <StyledSection id="about">
@@ -93,36 +135,55 @@ const About = ({ content }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={tControls}
         >
-          <h3 className="section-title">{frontmatter.title}</h3>
-          <div className="text-content">
-            <MDXRenderer>{body}</MDXRenderer>
-          </div>
-        </motion.div>
-        <motion.div
-          className="image-content"
-          ref={iRef}
-          initial={{ opacity: 0, x: 20 }}
-          animate={iControls}
-        >
-          <Img
-            className="about-author"
-            fluid={frontmatter.image.childImageSharp.fluid}
-          />
+        <TitleContainer>
+        <h1 className="title">
+        What We Do
+        </h1>
+        <ContactHeading>        
+        If we are not successful, <AnimatedUnderlining animate={uControls} big>there is no fee or cost to you.</AnimatedUnderlining> If we are successful, then a fee of 33% of
+        the refunds received. For a successful assessment appeal, a fee of 33% of the past year's savings.
+        </ContactHeading>
+        </TitleContainer>
+          <MainContainer>
+            <RowOne>
+              <FlexContainer>
+                <TextContent>
+                  <p className="subtitle">
+                  Refunds
+                  </p>
+                  <p className="description">        
+                  Get refunds for up to 4 years of past property taxes. Homeowner's tax bills
+                  are often calculated wrong. <AnimatedUnderlining animate={uControls}>I have obtained over 30,000 refunds for homeowners.</AnimatedUnderlining>
+                  </p>
+                </TextContent>
+              </FlexContainer>
+              <FlexContainer>
+                <ImageComponent name="refund" />
+              </FlexContainer>
+            </RowOne>
+            <RowTwo>
+            <FlexContainer>
+              <ImageComponent name="hero" />
+            </FlexContainer>
+            <FlexContainer>
+              <TextContent>
+                <p className="subtitle">
+                  Assessments
+                </p>
+                <p className="description">        
+                We appeal your property's assessment at the Assessor and at the Board of Review.
+                If the assessment (valuation) is successfully lowered, <AnimatedUnderlining animate={uControls}>this will result in a reduced
+                tax bill for up to 3 years.</AnimatedUnderlining>
+                </p>
+              </TextContent>
+            </FlexContainer>
+            </RowTwo>
+         </MainContainer>
         </motion.div>
       </StyledContentWrapper>
     </StyledSection>
   )
 }
 
-About.propTypes = {
-  content: PropTypes.arrayOf(
-    PropTypes.shape({
-      node: PropTypes.shape({
-        body: PropTypes.string.isRequired,
-        frontmatter: PropTypes.object.isRequired,
-      }).isRequired,
-    }).isRequired
-  ).isRequired,
-}
 
 export default About

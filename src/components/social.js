@@ -49,12 +49,12 @@ const StyledSocialWrapper = styled.div`
 
     &::-webkit-scrollbar-thumb {
       border-radius: 8px;
-      border: 0.2rem solid ${({ theme }) => theme.colors.background};
+      border: 0.2rem solid ${({ theme }) => theme.colors.backgroundHero};
       background-color: ${({ theme }) => theme.colors.scrollBar};
     }
 
     &::-webkit-scrollbar-track {
-      background-color: ${({ theme }) => theme.colors.background};
+      background-color: ${({ theme }) => theme.colors.backgroundHero};
       border-radius: 8px;
     }
   }
@@ -71,11 +71,11 @@ const StyledSocialWrapper = styled.div`
 const StyledSocialProfile = styled.a`
   width: ${({ width }) => (width ? width : "auto")};
   height: auto;
-  background: ${({ theme }) => theme.colors.background};
+  background: ${({ theme }) => theme.colors.backgroundHero};
   background: linear-gradient(
     to right,
     ${({ theme }) => theme.colors.primary} 50%,
-    ${({ theme }) => theme.colors.background} 50%
+    ${({ theme }) => theme.colors.backgroundHero} 50%
   );
   background-size: 205% 100%;
   background-position: right bottom;
@@ -88,7 +88,7 @@ const StyledSocialProfile = styled.a`
   color: ${({ theme }) => theme.colors.primary};
   &:hover {
     background-position: left bottom;
-    color: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.backgroundHero};
   }
   &:hover svg {
     filter: invert(1);
@@ -103,7 +103,7 @@ const StyledSocialProfile = styled.a`
 
 const Social = ({ width, padding, fontSize, fontWeight, withIcon }) => {
   const { darkMode } = useContext(Context).state
-
+  
   return (
     <StyledSocialWrapper itemCount={socialMedia.length}>
       {socialMedia.map(({ name, url }, key) => {

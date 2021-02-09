@@ -14,7 +14,7 @@ import Navbar from "./navbar"
 const StyledHeader = motion.custom(styled.header`
   width: 100%;
   height: ${({ theme }) => theme.headerHeight};
-  background: ${({ theme }) => theme.colors.background};
+  background: ${({ theme }) => theme.colors.backgroundHero};
 `)
 
 const StyledContentWrapper = styled(ContentWrapper)`
@@ -73,10 +73,10 @@ const StyledBurger = styled.button`
 `
 
 const Header = () => {
-  const { isIntroDone } = useContext(Context).state
   const [open, setOpen] = useState(false)
   const [windowWidth, setWindowWidth] = useState(0)
 
+  
   useEffect(() => {
     let handleWindowSizeChange
     // if (isSSR) is necessary to prevent error during the gatsby build
@@ -93,9 +93,9 @@ const Header = () => {
   // Required for animation - start after the splashScreen sequence is done
   const controls = useAnimation()
   useEffect(() => {
-    if (isIntroDone)
-      controls.start({ opacity: 1, y: 0, transition: { delay: 0.2 } })
-  }, [isIntroDone, controls])
+    controls.start({ opacity: 1, y: 0, transition: { delay: 0.2 } })
+  }, [controls])
+  
 
   let navigation
   if (detectMobileAndTablet(windowWidth)) {
@@ -123,7 +123,7 @@ const Header = () => {
       <Helmet bodyAttributes={{ class: open ? "blur" : "" }} />
       <StyledContentWrapper>
         <Link to="/" aria-label="home">
-          <Logo color="primary" size="2rem" />
+          <Logo color="primary" size="1.5rem" />
         </Link>
         {navigation}
       </StyledContentWrapper>

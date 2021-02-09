@@ -1,8 +1,8 @@
+
 // SECTION TEMPLATE
 // If you want to add more sections to your page, you can use this component as a template
 
 import React from "react"
-import PropTypes from "prop-types"
 import styled from "styled-components"
 
 import ContentWrapper from "../styles/contentWrapper"
@@ -11,7 +11,7 @@ import ContentWrapper from "../styles/contentWrapper"
 const StyledSection = styled.section`
   width: 100%;
   height: auto;
-  background: ${({ theme }) => theme.colors.background};
+  background: ${({ theme }) => theme.colors.backgroundHero};
   margin-top: 6rem;
 `
 
@@ -29,7 +29,8 @@ const StyledContentWrapper = styled(ContentWrapper)`
 // Add more styled components here
 
 const ___Section___ = ({ content }) => {
-  // Extract GraphQL data here
+
+  // Extract GraphQL data here  
   const sectionDetails = content[0].node
 
   return (
@@ -40,10 +41,6 @@ const ___Section___ = ({ content }) => {
       </StyledContentWrapper>
     </StyledSection>
   )
-}
-
-___Section___.propTypes = {
-  content: PropTypes.any.isRequired,
 }
 
 export default ___Section___
