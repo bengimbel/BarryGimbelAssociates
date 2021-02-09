@@ -62,6 +62,9 @@ const SloganWrapper = styled.div`
     padding: 0 2rem;
     justify-content: center;
   }
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    text-align: left;
+  }
 `
 const H5 = styled.h5`
   font-style: italic;
@@ -77,11 +80,14 @@ const LogoContainer = styled.div`
 `
 
 const ImageWrapper = styled.div`
-  width: 150px;
+  width: 100px;
   display: flex;
   padding: 1rem 0;
   @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
     padding: 0;
+  }
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 1rem 0;
   }
 `
 
@@ -93,8 +99,8 @@ const OtherInfoWrapper = styled.div`
     flex-direction: row;
   }
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    align-items: center;
-    flex-direction: row;
+    align-items: flex-start;
+    flex-direction: column;
   }
 `
 
