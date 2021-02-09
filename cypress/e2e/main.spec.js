@@ -8,4 +8,4 @@ describe("IndexPage", () => {
     cy.get("#about").should("exist")
     cy.get("#contact").should("exist")
   })
-
+})
