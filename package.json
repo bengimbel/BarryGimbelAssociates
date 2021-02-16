@@ -2,7 +2,7 @@
   "name": "barry_gimbel_associates",
   "description": "Barry Gimbel and Associates",
   "version": "1.0.0",
-  "author": "Ben Gimbel <bengimble@gmail.com>",
+  "author": "Ben Gimbel <bengimbel@gmail.com>",
   "dependencies": {
     "@mdx-js/mdx": "^1.5.1",
     "@mdx-js/react": "^1.5.1",

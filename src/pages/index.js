@@ -22,7 +22,7 @@ const IndexPage = ({ data }) => {
   return (
     <GlobalStateProvider initialState={globalState}>
       <Layout>
-        <SEO title={config.siteTitle} />
+        <SEO title={config.siteTitle} description={config.siteDescription} />
         <Hero data={data} />
         <About />
         <Contact /> 
