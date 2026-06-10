@@ -119,18 +119,18 @@ const Footer = () => {
         <InfoWrapper>
         <LocationWrapper>
           <Div>
-          790 Frontage Road, Suite 330
+          833 Central Avenue, Suite 394
           </Div>
           <Div>
-          Northfield, Illinois
+          Highland Park, Illinois
           </Div>
           <Div>
-          60093
+          60035
           </Div>
         </LocationWrapper>
         <PhoneWrapper>
           <Div>
-          Phone: 773-631-5500
+          Phone: 773-631-5500 / 773-965-0449
           </Div>
           <Div>
           Fax: 847-441-4181
